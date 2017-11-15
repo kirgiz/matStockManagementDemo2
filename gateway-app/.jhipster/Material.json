@@ -1,0 +1,53 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "lot",
+            "otherEntityName": "lot",
+            "otherEntityField": "code"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "materialTypeDefinition",
+            "otherEntityName": "materialTypeDefinition",
+            "otherEntityField": "code"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 10
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 200
+        },
+        {
+            "fieldName": "warehouseId",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "creationDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20171109105107",
+    "entityTableName": "material",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "microserviceName": "MaterialStockManagement",
+    "searchEngine": "elasticsearch",
+    "angularJSSuffix": "stockUtility"
+}

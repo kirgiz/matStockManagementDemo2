@@ -1,0 +1,57 @@
+
+<div *ngIf="lot">
+    <h2><span jhiTranslate="stockManagementApp.lot.detail.title">Lot</span> {{lot.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="stockManagementApp.lot.code">Code</span></dt>
+        <dd>
+            <span>{{lot.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="stockManagementApp.lot.description">Description</span></dt>
+        <dd>
+            <span>{{lot.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="stockManagementApp.lot.externalReference">External Reference</span></dt>
+        <dd>
+            <span>{{lot.externalReference}}</span>
+        </dd>
+        <dt><span jhiTranslate="stockManagementApp.lot.originalCurrencyId">Original Currency Id</span></dt>
+        <dd>
+            <span>{{lot.originalCurrencyId}}</span>
+        </dd>
+        <dt><span jhiTranslate="stockManagementApp.lot.sellCurrencyId">Sell Currency Id</span></dt>
+        <dd>
+            <span>{{lot.sellCurrencyId}}</span>
+        </dd>
+        <dt><span jhiTranslate="stockManagementApp.lot.quantity">Quantity</span></dt>
+        <dd>
+            <span>{{lot.quantity}}</span>
+        </dd>
+        <dt><span jhiTranslate="stockManagementApp.lot.unitPrice">Unit Price</span></dt>
+        <dd>
+            <span>{{lot.unitPrice}}</span>
+        </dd>
+        <dt><span jhiTranslate="stockManagementApp.lot.additionalInformation">Additional Information</span></dt>
+        <dd>
+            <span>{{lot.additionalInformation}}</span>
+        </dd>
+        <dt><span jhiTranslate="stockManagementApp.lot.creationDate">Creation Date</span></dt>
+        <dd>
+            <span>{{lot.creationDate | date:'mediumDate'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'lot-stock-utility/'+ lot.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

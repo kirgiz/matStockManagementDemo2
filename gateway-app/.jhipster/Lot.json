@@ -1,0 +1,70 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "material",
+            "otherEntityName": "material",
+            "otherEntityRelationshipName": "lot"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 10
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 200
+        },
+        {
+            "fieldName": "externalReference",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 60
+        },
+        {
+            "fieldName": "originalCurrencyId",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "sellCurrencyId",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "quantity",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "unitPrice",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "additionalInformation",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "creationDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20171109105105",
+    "entityTableName": "lot",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "microserviceName": "MaterialStockManagement",
+    "searchEngine": "elasticsearch",
+    "angularJSSuffix": "stockUtility"
+}

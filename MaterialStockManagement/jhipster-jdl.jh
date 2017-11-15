@@ -1,0 +1,57 @@
+entity MaterialTypeDefinition {
+	code String maxlength(10),
+    description String maxlength(200)
+}
+
+entity Lot {
+	code String maxlength(10),
+    description String maxlength(200),
+    externalReference String maxlength(60),
+    originalCurrencyId Integer,
+    sellCurrencyId Integer,
+    quantity Integer,
+    unitPrice Double,
+    additionalInformation TextBlob,
+    creationDate	LocalDate
+
+}
+
+entity Transfer {
+    code String maxlength(10),
+    description String maxlength(200),
+    warehouseFromId Integer,
+    warehouseToId Integer,
+    creationDate	LocalDate,
+    validationDate	LocalDate,
+    userId Integer
+}
+
+entity Material {
+    code String maxlength(10),
+    description String maxlength(200),
+    warehouseId Integer,
+    creationDate	LocalDate
+}
+
+relationship OneToMany {
+  Lot{material} to Material{lot(code) required},
+   MaterialTypeDefinition{material} to Material{materialTypeDefinition(code) required} 
+}
+
+relationship ManyToMany {
+     Transfer{itemTransfered} to Material
+}
+
+// Set pagination options
+paginate MaterialTypeDefinition with infinite-scroll
+paginate Lot, Material, Transfer  with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceClass 
+// Set an angular suffix
+angularSuffix * with stockUtility
+
+microservice * with MaterialStockManagement
+search * with elasticsearch 

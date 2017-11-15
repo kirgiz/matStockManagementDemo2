@@ -1,0 +1,30 @@
+{
+    "stockManagementApp": {
+        "rate" : {
+            "home": {
+                "title": "Rates",
+                "createLabel": "Create a new Rate",
+                "createOrEditLabel": "Create or edit a Rate",
+                "search": "Search for Rate"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Rate {{ id }}?"
+            },
+            "detail": {
+                "title": "Rate"
+            },
+            "factor": "Factor",
+            "spotRateDate": "Spot Rate Date",
+            "rate": "Rate",
+            "currencyFrom": "Currency From",
+            "currencyTo": "Currency To"
+        }
+    },
+    "currenciesAndRateManagementApp": {
+        "rate" : {
+            "created": "A new Rate is created with identifier {{ param }}",
+            "updated": "A Rate is updated with identifier {{ param }}",
+            "deleted": "A Rate is deleted with identifier {{ param }}"
+        }
+    }
+}

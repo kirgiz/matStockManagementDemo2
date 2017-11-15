@@ -1,0 +1,45 @@
+
+<div *ngIf="rate">
+    <h2><span jhiTranslate="stockManagementApp.rate.detail.title">Rate</span> {{rate.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="stockManagementApp.rate.factor">Factor</span></dt>
+        <dd>
+            <span>{{rate.factor}}</span>
+        </dd>
+        <dt><span jhiTranslate="stockManagementApp.rate.spotRateDate">Spot Rate Date</span></dt>
+        <dd>
+            <span>{{rate.spotRateDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="stockManagementApp.rate.rate">Rate</span></dt>
+        <dd>
+            <span>{{rate.rate}}</span>
+        </dd>
+        <dt><span jhiTranslate="stockManagementApp.rate.currencyFrom">Currency From</span></dt>
+        <dd>
+            <div *ngIf="rate.currencyFromId">
+                <a [routerLink]="['/currency-currency-utility', rate.currencyFromId]">{{rate.currencyFromIsoCode}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="stockManagementApp.rate.currencyTo">Currency To</span></dt>
+        <dd>
+            <div *ngIf="rate.currencyToId">
+                <a [routerLink]="['/currency-currency-utility', rate.currencyToId]">{{rate.currencyToIsoCode}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'rate-currency-utility/'+ rate.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

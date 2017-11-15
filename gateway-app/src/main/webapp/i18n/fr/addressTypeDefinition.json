@@ -1,0 +1,28 @@
+{
+    "stockManagementApp": {
+        "addressTypeDefinition" : {
+            "home": {
+                "title": "AddressTypeDefinitions",
+                "createLabel": "Créer un nouveau Address Type Definition",
+                "createOrEditLabel": "Créer ou éditer un Address Type Definition",
+                "search": "Recherche pour Address Type Definition"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Address Type Definition {{ id }} ?"
+            },
+            "detail": {
+                "title": "Address Type Definition"
+            },
+            "code": "Code",
+            "description": "Description",
+            "address": "Address"
+        }
+    },
+    "addressAndThirdManagementApp": {
+        "addressTypeDefinition" : {
+            "created": "Un nouveau Address Type Definition a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Address Type Definition avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Address Type Definition avec l'identifiant {{ param }} a été supprimé"
+        }
+    }
+}

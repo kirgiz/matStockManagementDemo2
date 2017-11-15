@@ -1,0 +1,43 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "rateFrom",
+            "otherEntityName": "rate",
+            "otherEntityRelationshipName": "currencyFrom"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "rateTo",
+            "otherEntityName": "rate",
+            "otherEntityRelationshipName": "currencyTo"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "isoCode",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 3
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 200
+        }
+    ],
+    "changelogDate": "20171109092514",
+    "entityTableName": "currency",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "microserviceName": "CurrenciesAndRateManagement",
+    "searchEngine": "elasticsearch",
+    "angularJSSuffix": "currencyUtility"
+}

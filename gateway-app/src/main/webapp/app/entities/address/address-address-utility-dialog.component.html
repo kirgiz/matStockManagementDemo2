@@ -1,0 +1,141 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myAddressLabel" jhiTranslate="stockManagementApp.address.home.createOrEditLabel">Create or edit a Address</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!address.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="address.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="stockManagementApp.address.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="address.description" maxlength="200" />
+            <div [hidden]="!(editForm.controls.description?.dirty && editForm.controls.description?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.description?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 200 }">
+                   This field cannot be longer than 200 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="stockManagementApp.address.addressLine1" for="field_addressLine1">Address Line 1</label>
+            <input type="text" class="form-control" name="addressLine1" id="field_addressLine1"
+                [(ngModel)]="address.addressLine1" maxlength="60" />
+            <div [hidden]="!(editForm.controls.addressLine1?.dirty && editForm.controls.addressLine1?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.addressLine1?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 60 }">
+                   This field cannot be longer than 60 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="stockManagementApp.address.addressLine2" for="field_addressLine2">Address Line 2</label>
+            <input type="text" class="form-control" name="addressLine2" id="field_addressLine2"
+                [(ngModel)]="address.addressLine2" maxlength="60" />
+            <div [hidden]="!(editForm.controls.addressLine2?.dirty && editForm.controls.addressLine2?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.addressLine2?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 60 }">
+                   This field cannot be longer than 60 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="stockManagementApp.address.addressLine3" for="field_addressLine3">Address Line 3</label>
+            <input type="text" class="form-control" name="addressLine3" id="field_addressLine3"
+                [(ngModel)]="address.addressLine3" maxlength="60" />
+            <div [hidden]="!(editForm.controls.addressLine3?.dirty && editForm.controls.addressLine3?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.addressLine3?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 60 }">
+                   This field cannot be longer than 60 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="stockManagementApp.address.city" for="field_city">City</label>
+            <input type="text" class="form-control" name="city" id="field_city"
+                [(ngModel)]="address.city" maxlength="60" />
+            <div [hidden]="!(editForm.controls.city?.dirty && editForm.controls.city?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.city?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 60 }">
+                   This field cannot be longer than 60 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="stockManagementApp.address.zipCode" for="field_zipCode">Zip Code</label>
+            <input type="text" class="form-control" name="zipCode" id="field_zipCode"
+                [(ngModel)]="address.zipCode" maxlength="20" />
+            <div [hidden]="!(editForm.controls.zipCode?.dirty && editForm.controls.zipCode?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.zipCode?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="stockManagementApp.address.type" for="field_type">Type</label>
+            <input type="text" class="form-control" name="type" id="field_type"
+                [(ngModel)]="address.type" maxlength="3" />
+            <div [hidden]="!(editForm.controls.type?.dirty && editForm.controls.type?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.type?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 3 }">
+                   This field cannot be longer than 3 characters.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="stockManagementApp.address.addressTypeDefinition" for="field_addressTypeDefinition">Address Type Definition</label>
+            <select class="form-control" id="field_addressTypeDefinition" name="addressTypeDefinition" [(ngModel)]="address.addressTypeDefinitionId"  required>
+                <option *ngIf="!editForm.value.addressTypeDefinition" [ngValue]="null" selected></option>
+                <option [ngValue]="addressTypeDefinitionOption.id" *ngFor="let addressTypeDefinitionOption of addresstypedefinitions; trackBy: trackAddressTypeDefinitionById">{{addressTypeDefinitionOption.description}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.addressTypeDefinition?.dirty && editForm.controls.addressTypeDefinition?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.addressTypeDefinition?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="stockManagementApp.address.country" for="field_country">Country</label>
+            <select class="form-control" id="field_country" name="country" [(ngModel)]="address.countryId"  required>
+                <option *ngIf="!editForm.value.country" [ngValue]="null" selected></option>
+                <option [ngValue]="countryOption.id" *ngFor="let countryOption of countries; trackBy: trackCountryById">{{countryOption.isoCode}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.country?.dirty && editForm.controls.country?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.country?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="stockManagementApp.address.third" for="field_third">Third</label>
+            <select class="form-control" id="field_third" name="third" [(ngModel)]="address.thirdId"  required>
+                <option *ngIf="!editForm.value.third" [ngValue]="null" selected></option>
+                <option [ngValue]="thirdOption.id" *ngFor="let thirdOption of thirds; trackBy: trackThirdById">{{thirdOption.description}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.third?.dirty && editForm.controls.third?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.third?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

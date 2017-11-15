@@ -1,0 +1,93 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myLotLabel" jhiTranslate="stockManagementApp.lot.home.createOrEditLabel">Create or edit a Lot</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!lot.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="lot.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="stockManagementApp.lot.code" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                [(ngModel)]="lot.code" maxlength="10" />
+            <div [hidden]="!(editForm.controls.code?.dirty && editForm.controls.code?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.code?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 10 }">
+                   This field cannot be longer than 10 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="stockManagementApp.lot.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="lot.description" maxlength="200" />
+            <div [hidden]="!(editForm.controls.description?.dirty && editForm.controls.description?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.description?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 200 }">
+                   This field cannot be longer than 200 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="stockManagementApp.lot.externalReference" for="field_externalReference">External Reference</label>
+            <input type="text" class="form-control" name="externalReference" id="field_externalReference"
+                [(ngModel)]="lot.externalReference" maxlength="60" />
+            <div [hidden]="!(editForm.controls.externalReference?.dirty && editForm.controls.externalReference?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.externalReference?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 60 }">
+                   This field cannot be longer than 60 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="stockManagementApp.lot.originalCurrencyId" for="field_originalCurrencyId">Original Currency Id</label>
+            <input type="number" class="form-control" name="originalCurrencyId" id="field_originalCurrencyId"
+                [(ngModel)]="lot.originalCurrencyId"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="stockManagementApp.lot.sellCurrencyId" for="field_sellCurrencyId">Sell Currency Id</label>
+            <input type="number" class="form-control" name="sellCurrencyId" id="field_sellCurrencyId"
+                [(ngModel)]="lot.sellCurrencyId"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="stockManagementApp.lot.quantity" for="field_quantity">Quantity</label>
+            <input type="number" class="form-control" name="quantity" id="field_quantity"
+                [(ngModel)]="lot.quantity"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="stockManagementApp.lot.unitPrice" for="field_unitPrice">Unit Price</label>
+            <input type="number" class="form-control" name="unitPrice" id="field_unitPrice"
+                [(ngModel)]="lot.unitPrice"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="stockManagementApp.lot.additionalInformation" for="field_additionalInformation">Additional Information</label>
+            <textarea class="form-control" name="additionalInformation" id="field_additionalInformation"
+                [(ngModel)]="lot.additionalInformation"  ></textarea>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="stockManagementApp.lot.creationDate" for="field_creationDate">Creation Date</label>
+            <div class="input-group">
+                <input id="field_creationDate" type="text" class="form-control" name="creationDate" ngbDatepicker  #creationDateDp="ngbDatepicker" [(ngModel)]="lot.creationDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="creationDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

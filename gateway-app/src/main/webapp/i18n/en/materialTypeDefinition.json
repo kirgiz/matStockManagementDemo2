@@ -1,0 +1,28 @@
+{
+    "stockManagementApp": {
+        "materialTypeDefinition" : {
+            "home": {
+                "title": "Material Type Definitions",
+                "createLabel": "Create a new Material Type Definition",
+                "createOrEditLabel": "Create or edit a Material Type Definition",
+                "search": "Search for Material Type Definition"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Material Type Definition {{ id }}?"
+            },
+            "detail": {
+                "title": "Material Type Definition"
+            },
+            "code": "Code",
+            "description": "Description",
+            "material": "Material"
+        }
+    },
+    "materialStockManagementApp": {
+        "materialTypeDefinition" : {
+            "created": "A new Material Type Definition is created with identifier {{ param }}",
+            "updated": "A Material Type Definition is updated with identifier {{ param }}",
+            "deleted": "A Material Type Definition is deleted with identifier {{ param }}"
+        }
+    }
+}

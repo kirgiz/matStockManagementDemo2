@@ -1,0 +1,41 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "currencyFrom",
+            "otherEntityName": "currency",
+            "otherEntityField": "isoCode"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "currencyTo",
+            "otherEntityName": "currency",
+            "otherEntityField": "isoCode"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "factor",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "spotRateDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "rate",
+            "fieldType": "Double"
+        }
+    ],
+    "changelogDate": "20171109092515",
+    "entityTableName": "rate",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceClass",
+    "microserviceName": "CurrenciesAndRateManagement",
+    "searchEngine": "elasticsearch",
+    "angularJSSuffix": "currencyUtility"
+}

@@ -1,0 +1,31 @@
+{
+    "stockManagementApp": {
+        "material" : {
+            "home": {
+                "title": "Materials",
+                "createLabel": "Créer un nouveau Material",
+                "createOrEditLabel": "Créer ou éditer un Material",
+                "search": "Recherche pour Material"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Material {{ id }} ?"
+            },
+            "detail": {
+                "title": "Material"
+            },
+            "code": "Code",
+            "description": "Description",
+            "warehouseId": "Warehouse Id",
+            "creationDate": "Creation Date",
+            "lot": "Lot",
+            "materialTypeDefinition": "Material Type Definition"
+        }
+    },
+    "materialStockManagementApp": {
+        "material" : {
+            "created": "Un nouveau Material a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Material avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Material avec l'identifiant {{ param }} a été supprimé"
+        }
+    }
+}

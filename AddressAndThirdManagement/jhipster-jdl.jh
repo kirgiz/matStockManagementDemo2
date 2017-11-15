@@ -1,0 +1,51 @@
+entity Country {
+	isoCode String maxlength(3),
+    description String maxlength(200)
+}
+
+entity AddressTypeDefinition {
+	code String maxlength(3),
+    description String maxlength(200)
+}
+
+entity ThirdTypeDefinition {
+	code String maxlength(3),
+    description String maxlength(200)
+}
+
+entity Third{
+	code String maxlength(3),
+    description String maxlength(200)
+}
+
+entity Address {
+     description String maxlength(200)
+    AddressLine1 String maxlength(60),
+    AddressLine2 String maxlength(60),
+    AddressLine3 String maxlength(60),
+    city String maxlength(60),
+    zipCode String maxlength(20),
+    type String maxlength(3)
+}
+
+ relationship OneToMany {
+ AddressTypeDefinition{address} to Address{AddressTypeDefinition(description) required},
+ Country{address} to Address{Country(isoCode) required},
+ ThirdTypeDefinition{third} to Third{ThirdTypeDefinition(description) required}
+ Third{address} to Address{third(description) required}
+ }
+
+
+// Set pagination options
+paginate AddressTypeDefinition, ThirdTypeDefinition, Country with infinite-scroll
+paginate Address with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceClass 
+// Set an angular suffix
+angularSuffix * with addressUtility
+
+microservice * with AddressAndThirdManagement
+search * with elasticsearch 

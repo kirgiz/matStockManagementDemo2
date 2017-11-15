@@ -1,0 +1,55 @@
+
+<div *ngIf="transfer">
+    <h2><span jhiTranslate="stockManagementApp.transfer.detail.title">Transfer</span> {{transfer.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="stockManagementApp.transfer.code">Code</span></dt>
+        <dd>
+            <span>{{transfer.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="stockManagementApp.transfer.description">Description</span></dt>
+        <dd>
+            <span>{{transfer.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="stockManagementApp.transfer.warehouseFromId">Warehouse From Id</span></dt>
+        <dd>
+            <span>{{transfer.warehouseFromId}}</span>
+        </dd>
+        <dt><span jhiTranslate="stockManagementApp.transfer.warehouseToId">Warehouse To Id</span></dt>
+        <dd>
+            <span>{{transfer.warehouseToId}}</span>
+        </dd>
+        <dt><span jhiTranslate="stockManagementApp.transfer.creationDate">Creation Date</span></dt>
+        <dd>
+            <span>{{transfer.creationDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="stockManagementApp.transfer.validationDate">Validation Date</span></dt>
+        <dd>
+            <span>{{transfer.validationDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="stockManagementApp.transfer.userId">User Id</span></dt>
+        <dd>
+            <span>{{transfer.userId}}</span>
+        </dd>
+        <dt><span jhiTranslate="stockManagementApp.transfer.itemTransfered">Item Transfered</span></dt>
+        <dd>
+            <span *ngFor="let itemTransfered of transfer.itemTransfereds; let last = last">
+                <a [routerLink]="['/material-stock-utility', itemTransfered?.id ]">{{itemTransfered.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'transfer-stock-utility/'+ transfer.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

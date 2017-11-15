@@ -1,0 +1,49 @@
+
+<div *ngIf="material">
+    <h2><span jhiTranslate="stockManagementApp.material.detail.title">Material</span> {{material.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="stockManagementApp.material.code">Code</span></dt>
+        <dd>
+            <span>{{material.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="stockManagementApp.material.description">Description</span></dt>
+        <dd>
+            <span>{{material.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="stockManagementApp.material.warehouseId">Warehouse Id</span></dt>
+        <dd>
+            <span>{{material.warehouseId}}</span>
+        </dd>
+        <dt><span jhiTranslate="stockManagementApp.material.creationDate">Creation Date</span></dt>
+        <dd>
+            <span>{{material.creationDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="stockManagementApp.material.lot">Lot</span></dt>
+        <dd>
+            <div *ngIf="material.lotId">
+                <a [routerLink]="['/lot-stock-utility', material.lotId]">{{material.lotCode}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="stockManagementApp.material.materialTypeDefinition">Material Type Definition</span></dt>
+        <dd>
+            <div *ngIf="material.materialTypeDefinitionId">
+                <a [routerLink]="['/material-type-definition-stock-utility', material.materialTypeDefinitionId]">{{material.materialTypeDefinitionCode}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'material-stock-utility/'+ material.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,59 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "itemTransfered",
+            "otherEntityName": "material",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 10
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 200
+        },
+        {
+            "fieldName": "warehouseFromId",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "warehouseToId",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "creationDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "validationDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "userId",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20171109105106",
+    "entityTableName": "transfer",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "microserviceName": "MaterialStockManagement",
+    "searchEngine": "elasticsearch",
+    "angularJSSuffix": "stockUtility"
+}

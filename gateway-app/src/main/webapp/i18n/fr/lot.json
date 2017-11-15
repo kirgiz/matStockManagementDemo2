@@ -1,0 +1,35 @@
+{
+    "stockManagementApp": {
+        "lot" : {
+            "home": {
+                "title": "Lots",
+                "createLabel": "Créer un nouveau Lot",
+                "createOrEditLabel": "Créer ou éditer un Lot",
+                "search": "Recherche pour Lot"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Lot {{ id }} ?"
+            },
+            "detail": {
+                "title": "Lot"
+            },
+            "code": "Code",
+            "description": "Description",
+            "externalReference": "External Reference",
+            "originalCurrencyId": "Original Currency Id",
+            "sellCurrencyId": "Sell Currency Id",
+            "quantity": "Quantity",
+            "unitPrice": "Unit Price",
+            "additionalInformation": "Additional Information",
+            "creationDate": "Creation Date",
+            "material": "Material"
+        }
+    },
+    "materialStockManagementApp": {
+        "lot" : {
+            "created": "Un nouveau Lot a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Lot avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Lot avec l'identifiant {{ param }} a été supprimé"
+        }
+    }
+}

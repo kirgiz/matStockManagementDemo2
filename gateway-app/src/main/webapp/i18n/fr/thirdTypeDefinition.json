@@ -1,0 +1,28 @@
+{
+    "stockManagementApp": {
+        "thirdTypeDefinition" : {
+            "home": {
+                "title": "ThirdTypeDefinitions",
+                "createLabel": "Créer un nouveau Third Type Definition",
+                "createOrEditLabel": "Créer ou éditer un Third Type Definition",
+                "search": "Recherche pour Third Type Definition"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Third Type Definition {{ id }} ?"
+            },
+            "detail": {
+                "title": "Third Type Definition"
+            },
+            "code": "Code",
+            "description": "Description",
+            "third": "Third"
+        }
+    },
+    "addressAndThirdManagementApp": {
+        "thirdTypeDefinition" : {
+            "created": "Un nouveau Third Type Definition a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Third Type Definition avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Third Type Definition avec l'identifiant {{ param }} a été supprimé"
+        }
+    }
+}

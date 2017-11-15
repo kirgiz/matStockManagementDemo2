@@ -1,0 +1,85 @@
+<div>
+    <h2>
+        <span jhiTranslate="stockManagementApp.rate.home.title">Rates</span>
+        <button class="btn btn-primary float-right jh-create-entity create-rate-currency-utility" [routerLink]="['/', { outlets: { popup: ['rate-currency-utility-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="stockManagementApp.rate.home.createLabel">
+            Create new Rate
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'stockManagementApp.rate.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="rates">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="factor"><span jhiTranslate="stockManagementApp.rate.factor">Factor</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="spotRateDate"><span jhiTranslate="stockManagementApp.rate.spotRateDate">Spot Rate Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="rate"><span jhiTranslate="stockManagementApp.rate.rate">Rate</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="currencyFromIsoCode"><span jhiTranslate="stockManagementApp.rate.currencyFrom">Currency From</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="currencyToIsoCode"><span jhiTranslate="stockManagementApp.rate.currencyTo">Currency To</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let rate of rates ;trackBy: trackId">
+                <td><a [routerLink]="['../rate-currency-utility', rate.id ]">{{rate.id}}</a></td>
+                <td>{{rate.factor}}</td>
+                <td>{{rate.spotRateDate | date:'mediumDate'}}</td>
+                <td>{{rate.rate}}</td>
+                <td>
+                    <div *ngIf="rate.currencyFromId">
+                        <a [routerLink]="['../currency-currency-utility', rate.currencyFromId  ]" >{{rate.currencyFromIsoCode}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="rate.currencyToId">
+                        <a [routerLink]="['../currency-currency-utility', rate.currencyToId  ]" >{{rate.currencyToIsoCode}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../rate-currency-utility', rate.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'rate-currency-utility/'+ rate.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'rate-currency-utility/'+ rate.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

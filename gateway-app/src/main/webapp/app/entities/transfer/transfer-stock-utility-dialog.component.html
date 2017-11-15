@@ -1,0 +1,88 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myTransferLabel" jhiTranslate="stockManagementApp.transfer.home.createOrEditLabel">Create or edit a Transfer</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!transfer.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="transfer.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="stockManagementApp.transfer.code" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                [(ngModel)]="transfer.code" maxlength="10" />
+            <div [hidden]="!(editForm.controls.code?.dirty && editForm.controls.code?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.code?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 10 }">
+                   This field cannot be longer than 10 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="stockManagementApp.transfer.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="transfer.description" maxlength="200" />
+            <div [hidden]="!(editForm.controls.description?.dirty && editForm.controls.description?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.description?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 200 }">
+                   This field cannot be longer than 200 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="stockManagementApp.transfer.warehouseFromId" for="field_warehouseFromId">Warehouse From Id</label>
+            <input type="number" class="form-control" name="warehouseFromId" id="field_warehouseFromId"
+                [(ngModel)]="transfer.warehouseFromId"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="stockManagementApp.transfer.warehouseToId" for="field_warehouseToId">Warehouse To Id</label>
+            <input type="number" class="form-control" name="warehouseToId" id="field_warehouseToId"
+                [(ngModel)]="transfer.warehouseToId"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="stockManagementApp.transfer.creationDate" for="field_creationDate">Creation Date</label>
+            <div class="input-group">
+                <input id="field_creationDate" type="text" class="form-control" name="creationDate" ngbDatepicker  #creationDateDp="ngbDatepicker" [(ngModel)]="transfer.creationDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="creationDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="stockManagementApp.transfer.validationDate" for="field_validationDate">Validation Date</label>
+            <div class="input-group">
+                <input id="field_validationDate" type="text" class="form-control" name="validationDate" ngbDatepicker  #validationDateDp="ngbDatepicker" [(ngModel)]="transfer.validationDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="validationDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="stockManagementApp.transfer.userId" for="field_userId">User Id</label>
+            <input type="number" class="form-control" name="userId" id="field_userId"
+                [(ngModel)]="transfer.userId"  />
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="stockManagementApp.transfer.itemTransfered" for="field_itemTransfered">Item Transfered</label>
+            <select class="form-control" id="field_itemTransfered" multiple name="itemTransfered" [(ngModel)]="transfer.itemTransfereds">
+                <option [ngValue]="getSelected(transfer.itemTransfereds, materialOption)" *ngFor="let materialOption of materials; trackBy: trackMaterialById">{{materialOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

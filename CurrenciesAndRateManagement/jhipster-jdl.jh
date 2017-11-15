@@ -1,0 +1,29 @@
+entity Currency {
+	isoCode String maxlength(3),
+    description String maxlength(200)
+}
+
+entity Rate {
+    factor 	Integer,
+    spotRateDate	LocalDate,
+    rate Double
+}
+
+relationship OneToMany {
+  Currency{rateFrom} to Rate{CurrencyFrom(isoCode) required},
+  Currency{rateTo} to Rate{CurrencyTo(isoCode) required}
+}
+
+// Set pagination options
+paginate Rate with infinite-scroll
+paginate Currency with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceClass 
+// Set an angular suffix
+angularSuffix * with currencyUtility
+
+microservice * with CurrenciesAndRateManagement
+search * with elasticsearch 

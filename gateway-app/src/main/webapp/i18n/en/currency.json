@@ -1,0 +1,29 @@
+{
+    "stockManagementApp": {
+        "currency" : {
+            "home": {
+                "title": "Currencies",
+                "createLabel": "Create a new Currency",
+                "createOrEditLabel": "Create or edit a Currency",
+                "search": "Search for Currency"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Currency {{ id }}?"
+            },
+            "detail": {
+                "title": "Currency"
+            },
+            "isoCode": "Iso Code",
+            "description": "Description",
+            "rateFrom": "Rate From",
+            "rateTo": "Rate To"
+        }
+    },
+    "currenciesAndRateManagementApp": {
+        "currency" : {
+            "created": "A new Currency is created with identifier {{ param }}",
+            "updated": "A Currency is updated with identifier {{ param }}",
+            "deleted": "A Currency is deleted with identifier {{ param }}"
+        }
+    }
+}
